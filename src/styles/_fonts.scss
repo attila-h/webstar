@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('/assets/Starjedi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Distant Galaxy';
+  src: url('/assets/SfDistantGalaxyAltoutline-e2Bp.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/Poppins-Black.ttf') format('truetype'),
+       url('/assets/Poppins-Bold.ttf') format('truetype'),
+       url('/assets/Poppins-ExtraBold.ttf') format('truetype'),
+       url('/assets/Poppins-Medium.ttf') format('truetype'),
+       url('/assets/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.starjedi {
+  font-family: 'Star Jedi', sans-serif;
+}
+
+.distantgalaxy {
+  font-family: 'Distant Galaxy', sans-serif;
+}
+
+.poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+$font-sizes-responsive: (
+  fs-14: (mobile: (size: 12px, line-height: 16px), tablet: (size: 13px, line-height: 17px), desktop: (size: 14px, line-height: 18px)),
+  fs-16: (mobile: (size: 14px, line-height: 18px), tablet: (size: 15px, line-height: 20px), desktop: (size: 16px, line-height: 22px)),
+  fs-24: (mobile: (size: 18px, line-height: 22px), tablet: (size: 20px, line-height: 26px), desktop: (size: 24px, line-height: 30px)),
+  fs-30: (mobile: (size: 24px, line-height: 30px), tablet: (size: 26px, line-height: 32px), desktop: (size: 30px, line-height: 36px)),
+  fs-40: (mobile: (size: 30px, line-height: 36px), tablet: (size: 36px, line-height: 44px), desktop: (size: 40px, line-height: 48px)),
+  fs-70: (mobile: (size: 48px, line-height: 56px), tablet: (size: 60px, line-height: 72px), desktop: (size: 70px, line-height: 84px)),
+  fs-90: (mobile: (size: 64px, line-height: 72px), tablet: (size: 80px, line-height: 96px), desktop: (size: 90px, line-height: 108px)),
+  fs-150: (mobile: (size: 90px, line-height: 108px), tablet: (size: 120px, line-height: 144px), desktop: (size: 150px, line-height: 180px))
+);
+
+@mixin generate-font-size-classes($font-sizes-map) {
+  @each $key, $value in $font-sizes-map {
+    // A betűméret és line-height értékek kiolvasása
+    $mobile-size: map-get(map-get($value, mobile), size);
+    $mobile-line-height: map-get(map-get($value, mobile), line-height);
+    $tablet-size: map-get(map-get($value, tablet), size);
+    $tablet-line-height: map-get(map-get($value, tablet), line-height);
+    $desktop-size: map-get(map-get($value, desktop), size);
+    $desktop-line-height: map-get(map-get($value, desktop), line-height);
+    
+    // Generáljuk az osztályokat
+    .#{$key} {
+      font-size: $mobile-size;
+      line-height: $mobile-line-height;
+
+      @media (min-width: 600px) { // Tablet
+        font-size: $tablet-size;
+        line-height: $tablet-line-height;
+      }
+
+      @media (min-width: 1024px) { // Desktop
+        font-size: $desktop-size;
+        line-height: $desktop-line-height;
+      }
+    }
+  }
+}
+
+// Meghívjuk a mixint, hogy létrejöjjenek az osztályok
+@include generate-font-size-classes($font-sizes-responsive);
