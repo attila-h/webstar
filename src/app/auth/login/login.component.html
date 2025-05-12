@@ -1,0 +1,16 @@
+<div class="container">
+  <p class="fs-30 starjedi title">WEBSTAR</p>
+  <p class="fs-70 distantgalaxy subtitle">FRONTEND</p>
+
+  <form [formGroup]="fg" (ngSubmit)="submit()">
+    <div>
+      <label for="username" class="fs-14">Felhasználónév</label>
+      <input id="username" class="fs-16" formControlName="username" placeholder="mail@example.com" />
+    </div>
+    <div>
+      <label for="username" class="fs-14">Jelszó</label>
+      <input id="password" class="fs-16" formControlName="password" type="password" />
+    </div>
+    <button type="submit" class="fs-16" [disabled]="fg.invalid">Belépés</button>
+  </form>
+</div>
