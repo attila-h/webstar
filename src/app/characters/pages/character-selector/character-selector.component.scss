@@ -1,0 +1,103 @@
+@use 'styles/colors';
+
+:host {
+  display: block;
+  min-width: 100%;
+  min-height: 100vh;
+  background: url('/assets/bg_2.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.character-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.character-details, .character-image {
+  width: 50%;
+}
+
+.label {
+  color: colors.$yellow;
+}
+
+.rect {
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.character-attributes {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.character-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  min-width: 200px;
+
+  .rect {
+    border: 8px solid colors.$white;
+  }
+  .rect.dark {
+    background-color: colors.$black;
+  }
+  .rect.light {
+    background-color: colors.$white;
+  }
+}
+
+.character-power {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  min-width: 200px;
+  .rect {
+    background-color: colors.$yellow;
+    border: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.pager {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 30px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.next {
+  transform: rotate(180deg);
+  transform-origin: center;
+}
+
+.next, .prev {
+  cursor: pointer;
+} 
+
+.character-image {
+  text-align: center;
+  img {
+    max-width: 100%;
+    max-height: 400px;
+  }
+}

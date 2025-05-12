@@ -1,0 +1,34 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="character-container">
+    <div class="character-details">
+      <div class="character-attributes">
+        <div class="character-side">
+          <div class="rect" [ngClass]="{ 'light': activeCharacter()?.side === 'LIGHT', 'dark': activeCharacter()?.side === 'DARK' }"></div>
+          <div class="column">
+            <div class="label fs-16">{{ 'Oldal' | uppercase }}</div>
+            <div class="value fs-20">{{ activeCharacter()?.side === 'LIGHT' ? 'Világos' : 'Sötét' }}</div>
+          </div>
+        </div>
+        <div class="character-power">
+          <div class="rect">
+            <img src="assets/star.svg" />
+          </div>
+          <div class="column">
+            <div class="label fs-16">{{ 'Különleges erő' | uppercase }}</div>
+            <div class="value fs-20">{{ activeCharacter()?.attributes?.power }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="starjedi fs-90" [innerHTML]="activeCharacter()?.name"></div>
+      <div class="fs-16" [innerHTML]="activeCharacter()?.description"></div>
+    </div>
+    <div class="character-image">
+      <div class="pager">
+        <img class="prev" src="assets/arrow_circle.png" (click)="onPrev()" />
+        <img class="next" src="assets/arrow_circle.png" (click)="onNext()" />
+      </div>
+      <img [src]="'assets/' + activeCharacter()?.id + '.png'" (click)="onPrev()" />
+    </div>
+  </div>
+</div>
