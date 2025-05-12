@@ -60,5 +60,6 @@ export class AuthStore {
 
   logout() {
     this.state.set({ token: null, refreshToken: null, user: null });
+    this.router.navigate(['login'])
   }
 }

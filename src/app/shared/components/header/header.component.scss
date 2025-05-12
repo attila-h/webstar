@@ -1,0 +1,33 @@
+@use 'styles/colors';
+
+:host {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid colors.$white;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin: 0px 10px;
+  }
+}
+
+.header-logout {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  
+  img {
+    margin: 0px 10px;
+  }
+}
+
+.header-logout:hover {
+  color: colors.$gray;
+}
